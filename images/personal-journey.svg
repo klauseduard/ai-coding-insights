@@ -39,7 +39,7 @@
   <text x="300" y="325" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#333">Context-Aware Era</text>
   <text x="300" y="345" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Intuitive AI coding chat</text>
   <text x="300" y="365" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Codebase understanding</text>
-  <text x="300" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Diagram & test generation</text>
+  <text x="300" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Diagram &amp; test generation</text>
   
   <!-- Milestone 3: Agentic Paradigm -->
   <circle cx="550" cy="380" r="15" fill="#e74c3c" />
