@@ -4,6 +4,8 @@ AI-assisted software development landscape has changed on fast pace over the las
 
 ## Evolution Stages of AI-Assisted Development
 
+![Timeline](https://raw.githubusercontent.com/klauseduard/ai-coding-insights/main/images/evolution.svg)
+
 ### 1. Autocomplete Assistants
 - Early tools like GitHub Copilot introduced code completion based on surrounding context.
 - These tools significantly improved productivity by reducing repetitive typing and boilerplate code.
@@ -28,6 +30,8 @@ AI-assisted software development landscape has changed on fast pace over the las
 - This is facilitated becaus of relative ease of implementing simpler aspects of the interfacing protocol.
 
 ## Personal Journey through AI-Assisted Coding
+
+!["Personal Journey" Timeline](https://raw.githubusercontent.com/klauseduard/ai-coding-insights/main/images/personal-journey.svg)
 
 ### Copilot (smart autocomplete) era:
 - 2023--fall 2024. Limited context awareness.
@@ -65,7 +69,6 @@ AI-assisted software development landscape has changed on fast pace over the las
 - Unlocked: reasoning models
 - Unlocked: deep research tools
 
-!["Personal Journey" Timeline](https://raw.githubusercontent.com/klauseduard/ai-coding-insights/main/images/personal-journey.svg)
 
 ## Some problems that have emerged
 - Service reliablity issues: Easy to get dependent on AI assistants. Model provider can go down during peak usage, becoming a blocker if in the middle of debugging a critical issue, or implementing an urgent feature. One needs to have fallback options.
