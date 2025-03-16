@@ -1,6 +1,3 @@
-Please try to visualize this description of latest progress in AI-assisted software development and of the personal journey of the engineer writing this down:
-
-
 # Evolution of AI-Assisted Coding
 
 AI-assisted software development landscape has changed on fast pace over the last two years (2023-2025) with most significant leaps over the last three months. The evolution is not just technological but can be described as paradigm shift how software engineering teams can work and what they can achieve.
