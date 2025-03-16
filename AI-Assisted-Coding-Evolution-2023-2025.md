@@ -68,7 +68,7 @@ AI-assisted software development landscape has changed on fast pace over the las
 - Unlocked: reasoning models
 - Unlocked: deep research tools
 
-![AI Coding Evolution Timeline](./images/personal-journey.svg)
+![AI Coding Evolution Timeline](/images/personal-journey.svg)
 
 ## Some problems that have emerged
 - Service reliablity issues: Easy to get dependent on AI assistants. Model provider can go down during peak usage, becoming a blocker if in the middle of debugging a critical issue, or implementing an urgent feature. One needs to have fallback options.
