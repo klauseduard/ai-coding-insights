@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="24" fill="#333">Personal Journey Through AI-Assisted Coding</text>
+  <text x="400" y="80" text-anchor="middle" font-family="Arial" font-style="italic" font-size="16" fill="#555">Milestones and capabilities unlocked (2023-2025)</text>
+  
+  <!-- Journey path -->
+  <path d="M100,200 C150,150 200,300 300,280 C400,260 450,400 550,380 C650,360 700,500 750,450" stroke="#3498db" stroke-width="8" fill="none" stroke-linecap="round" />
+  
+  <!-- Time periods -->
+  <rect x="50" y="120" width="200" height="40" rx="10" ry="10" fill="#3498db" fill-opacity="0.2" stroke="#3498db" stroke-width="2" />
+  <text x="150" y="145" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#333">2023 - Fall 2024</text>
+  
+  <rect x="250" y="120" width="200" height="40" rx="10" ry="10" fill="#2ecc71" fill-opacity="0.2" stroke="#2ecc71" stroke-width="2" />
+  <text x="350" y="145" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#333">End of 2024</text>
+  
+  <rect x="450" y="120" width="200" height="40" rx="10" ry="10" fill="#e74c3c" fill-opacity="0.2" stroke="#e74c3c" stroke-width="2" />
+  <text x="550" y="145" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#333">Early 2025</text>
+  
+  <rect x="650" y="120" width="100" height="40" rx="10" ry="10" fill="#9b59b6" fill-opacity="0.2" stroke="#9b59b6" stroke-width="2" />
+  <text x="700" y="145" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="#333">Feb-Mar 2025</text>
+  
+  <!-- Milestone 1: Copilot Era -->
+  <circle cx="100" cy="200" r="15" fill="#3498db" />
+  <text x="100" y="200" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="white">1</text>
+  
+  <rect x="20" y="220" width="160" height="80" rx="10" ry="10" fill="white" stroke="#3498db" stroke-width="2" />
+  <text x="100" y="245" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#333">Copilot Era</text>
+  <text x="100" y="265" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Smart autocomplete</text>
+  <text x="100" y="285" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Limited context awareness</text>
+  
+  <!-- Milestone 2: Context-Aware Era -->
+  <circle cx="300" cy="280" r="15" fill="#2ecc71" />
+  <text x="300" y="280" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="white">2</text>
+  
+  <rect x="220" y="300" width="160" height="100" rx="10" ry="10" fill="white" stroke="#2ecc71" stroke-width="2" />
+  <text x="300" y="325" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#333">Context-Aware Era</text>
+  <text x="300" y="345" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Intuitive AI coding chat</text>
+  <text x="300" y="365" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Codebase understanding</text>
+  <text x="300" y="385" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Diagram & test generation</text>
+  
+  <!-- Milestone 3: Agentic Paradigm -->
+  <circle cx="550" cy="380" r="15" fill="#e74c3c" />
+  <text x="550" y="380" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="white">3</text>
+  
+  <rect x="440" y="400" width="160" height="140" rx="10" ry="10" fill="white" stroke="#e74c3c" stroke-width="2" />
+  <text x="520" y="425" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#333">Agentic Paradigm</text>
+  <text x="520" y="445" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Semi-autonomous coding</text>
+  <text x="520" y="465" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Multi-modal analysis</text>
+  <text x="520" y="485" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Metaprogramming</text>
+  <text x="520" y="505" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Rule file hierarchies</text>
+  <text x="520" y="525" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Ephemeral resources</text>
+  
+  <!-- Milestone 4: Advanced Tool Usage -->
+  <circle cx="750" cy="450" r="15" fill="#9b59b6" />
+  <text x="750" y="450" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="white">4</text>
+  
+  <rect x="620" y="470" width="160" height="100" rx="10" ry="10" fill="white" stroke="#9b59b6" stroke-width="2" />
+  <text x="700" y="495" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="14" fill="#333">Advanced Tool Usage</text>
+  <text x="700" y="515" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Web search integration</text>
+  <text x="700" y="535" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">MCP protocol integrations</text>
+  <text x="700" y="555" text-anchor="middle" font-family="Arial" font-size="12" fill="#555">Reasoning models</text>
+</svg>
