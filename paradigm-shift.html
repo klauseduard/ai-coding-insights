@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Evolution of AI-Assisted Coding: A Personal Journey Through the Paradigm Shift</title>
+  <style>
+    :root {
+      --primary: #2a3b4c;
+      --secondary: #4a6b8c;
+      --tertiary: #7a9bbc;
+      --accent: #c5d7e7;
+      --background: #f8f9fa;
+      --text: #333;
+      --light-text: #666;
+      --highlight: #e63946;
+      --success: #2a9d8f;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--background);
+      padding: 2rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: var(--primary);
+      font-weight: 400;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Timeline styles */
+    .timeline-container {
+      position: relative;
+      padding: 2rem 0;
+    }
+    
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background-color: var(--tertiary);
+      transform: translateX(-50%);
+    }
+    
+    .timeline-nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+    
+    .timeline-nav button {
+      background-color: var(--background);
+      border: 2px solid var(--tertiary);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .timeline-nav button:hover {
+      background-color: var(--tertiary);
+      color: white;
+    }
+    
+    .timeline-nav button.active {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    
+    .timeline-item {
+      display: flex;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+    
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+    }
+    
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .timeline-content {
+      width: 45%;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 20px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent transparent white;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 20px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent white transparent transparent;
+    }
+    
+    .timeline-date {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 120px;
+      padding: 0.25rem 0.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      font-size: 0.9rem;
+      border-radius: 4px;
+    }
+    
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: var(--highlight);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    
+    .timeline-title {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      margin-right: 120px;
+      font-weight: 500;
+    }
+    
+    .timeline-subtitle {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    
+    .timeline-features {
+      margin-top: 1rem;
+    }
+    
+    .timeline-feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .timeline-feature::before {
+      content: '•';
+      color: var(--highlight);
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+    
+    .unlocked-feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--success);
+    }
+    
+    .unlocked-feature::before {
+      content: '✓';
+      color: var(--success);
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+    
+    /* Blog content styles */
+    .blog-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 3rem;
+    }
+    
+    .blog-content h2 {
+      color: var(--primary);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-content p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+    
+    .blog-content ul {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .blog-content .aside {
+      font-style: italic;
+      color: var(--secondary);
+      padding: 1rem;
+      border-left: 3px solid var(--tertiary);
+      margin: 1rem 0;
+    }
+    
+    .attribution {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 40px;
+      }
+      
+      .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+        flex-direction: row;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+      }
+      
+      .timeline-marker {
+        left: 40px;
+      }
+      
+      .timeline-date {
+        top: 10px;
+        right: 15px;
+        width: 100px;
+      }
+      
+      .blog-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Introduction Section -->
+    <div class="blog-content">
+      <h1>The Evolution of AI-Assisted Coding: A Personal Journey Through the Paradigm Shift</h1>
+      
+      <h2>How I Met the Agents</h2>
+      <p>In December 2024, while on vacation, I read a Twitter post claiming that a new IDE called Cursor was pretty bad and kept deleting users' files and code lines. Having done plenty of coding with AI already, I wanted to see just how bad it could be and installed it. Less than two weeks later, I had implemented an extensive hobby project with it and felt the world had changed.</p>
+      
+      <p>Then January came, and I discovered Cursor's agent mode. I implemented the game of Scrabble with it in just 40 minutes, with the agent taking the lead and starting to give instructions to me ("create screenshots for documentation"). Only a short while later I realized that these agents were pretty good at using tools as I was updating a years-old experimental RAG/semantic search project wanting it to use local LLMs instead of OpenAPI's closed API. The agent created issues and pull requests with greater clarity than I would have managed myself.</p>
+      
+      <p class="aside">(As a curious aside: the name "Cursor" seems to come from Latin, with one meaning being "a slave who ran before the chariot of a grandee, forerunner" – somewhat apt description for AI forerunners now racing ahead of our development work.)</p>
+    </div>
+
+    <!-- Interactive Timeline Section -->
+    <div class="timeline-nav">
+      <button class="timeline-button active" data-filter="all">All Milestones</button>
+      <button class="timeline-button" data-filter="evolution">Evolution Stages</button>
+      <button class="timeline-button" data-filter="personal">Personal Journey</button>
+    </div>
+    
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      
+      <!-- Combined Chronological Timeline -->
+      
+      <!-- 2023 -->
+      <div class="timeline-item" data-category="evolution">
+        <div class="timeline-content">
+          <div class="timeline-date">2023</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Autocomplete Assistants</h2>
+          <p class="timeline-subtitle">The beginning of AI-assisted coding</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">GitHub Copilot introduced code completion based on context</div>
+            <div class="timeline-feature">Reduced repetitive typing and boilerplate code</div>
+            <div class="timeline-feature">Operated primarily at line or function level</div>
+            <div class="timeline-feature">Limited additional context from open files in IDE</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">2023-Fall 2024</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Copilot Era</h2>
+          <p class="timeline-subtitle">Smart autocomplete with limited context</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Limited context awareness</div>
+            <div class="timeline-feature">Still productive compared to non-AI approaches</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Late 2024 -->
+      <div class="timeline-item" data-category="evolution">
+        <div class="timeline-content">
+          <div class="timeline-date">Late 2024</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Context-Aware Coding Agents</h2>
+          <p class="timeline-subtitle">Deeper understanding of codebases</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Tools like Cursor, Windsurf, Claude Code brought deeper context awareness</div>
+            <div class="timeline-feature">Understanding entire codebases via semantic search</div>
+            <div class="timeline-feature">Conversational programming with discussion-like interactions</div>
+            <div class="timeline-feature">Metaprogramming through natural-language rule files</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">December 2024</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Context-Aware Coding Agents</h2>
+          <p class="timeline-subtitle">From skepticism to transformation</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Intuitive AI coding chat with project awareness</div>
+            <div class="timeline-feature">Capability to talk to/question code</div>
+            <div class="unlocked-feature">Diagram generation from IDE chat</div>
+            <div class="unlocked-feature">Automated test generation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- January 2025 -->
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">January 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Agentic Paradigm Beginnings</h2>
+          <p class="timeline-subtitle">First impressions of semi-autonomous agents</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Implementing Scrabble in 40 minutes with agent guidance</div>
+            <div class="timeline-feature">Semi-autonomous code navigation and changes</div>
+            <div class="unlocked-feature">"Yolo mode" for uninterrupted experiments</div>
+            <div class="unlocked-feature">Embedded tools and command-line operations</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item" data-category="evolution">
+        <div class="timeline-content">
+          <div class="timeline-date">Early 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Tool-Using Coding Agents</h2>
+          <p class="timeline-subtitle">Integration with external tools</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Integration with web search and documentation retrieval</div>
+            <div class="timeline-feature">Real-time troubleshooting and validation</div>
+            <div class="timeline-feature">Code execution and linter error auto-fixing</div>
+            <div class="timeline-feature">Iterative learning from feedback loops</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- February 2025 -->
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">February 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Advanced Tool Usage</h2>
+          <p class="timeline-subtitle">Deeper integration and reasoning</p>
+          <div class="timeline-features">
+            <div class="unlocked-feature">Agents using web search</div>
+            <div class="unlocked-feature">MCP protocol integrations (JIRA, Grafana)</div>
+            <div class="unlocked-feature">Reasoning models</div>
+            <div class="unlocked-feature">Deep research tools</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="timeline-item" data-category="evolution">
+        <div class="timeline-content">
+          <div class="timeline-date">Q1 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Custom Tool Integration to IDEs</h2>
+          <p class="timeline-subtitle">Expanding capabilities through protocols</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">MCP protocols for custom tool introduction</div>
+            <div class="timeline-feature">Growing ecosystem of downloadable tool interfaces</div>
+            <div class="timeline-feature">Simplified implementation of interfacing protocols</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- March 2025 -->
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">March 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Metaprogramming & Ephemeral Resources</h2>
+          <p class="timeline-subtitle">Expanding beyond code</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Rule file hierarchies for automation patterns</div>
+            <div class="timeline-feature">Persisting agent experience in rule files</div>
+            <div class="unlocked-feature">Temporary throwaway helper tools</div>
+            <div class="unlocked-feature">Ephemeral "print-on-demand" documentation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- April 2025 -->
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">April 2025</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Parallel Assistants & Visualization</h2>
+          <p class="timeline-subtitle">Diversification of agent capabilities</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">Parallel assistants working on different aspects</div>
+            <div class="timeline-feature">No-code assistant living in project folder</div>
+            <div class="unlocked-feature">Better presentation formats (draw.io, SVG)</div>
+            <div class="unlocked-feature">Interactive infographics (web pages)</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Future -->
+      <div class="timeline-item" data-category="personal">
+        <div class="timeline-content">
+          <div class="timeline-date">Future</div>
+          <div class="timeline-marker"></div>
+          <h2 class="timeline-title">Where We're Heading Next</h2>
+          <p class="timeline-subtitle">The coming transformation</p>
+          <div class="timeline-features">
+            <div class="timeline-feature">MCP agents for client benefit</div>
+            <div class="timeline-feature">Autonomous agents working during nighttime</div>
+            <div class="timeline-feature">Agents orchestrating and creating other agents</div>
+            <div class="timeline-feature">Local LLMs for privacy-sensitive coordination</div>
+            <div class="timeline-feature">Organizations adapting to artificial co-workers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Challenges and Future Section -->
+    <div class="blog-content">
+      <h2>Lessons Learned and Drawbacks</h2>
+      <p>Not everything has been smooth sailing of course. I've learned some painful lessons about not letting agents search for solutions from the wrong places, being more resolute about rolling back long chains of bad reasoning, and Claude Code taking all my money. When an agent starts down an unproductive path, it's often better to reset than to try to course-correct incrementally.</p>
+      
+      <h2>Challenges and Considerations</h2>
+      <ul>
+        <li><strong>Addiction and learned helplessness:</strong> It's easy to become dependent on AI assistants and feel helpless when they turn their backs to you. When a model provider goes down during peak usage, it might become a blocker if you're in the middle of debugging a critical issue or implementing an urgent feature. One needs to remember where to fall back to.</li>
+        <li><strong>Tooling costs:</strong> The usage-based pricing of cutting-edge models adds up quickly when used intensively. You might need to keep a budget. The cost structure might create a barrier. Yes, I am talking about Claude Code.</li>
+        <li><strong>Copyright uncertainty:</strong> I'm still not quite sure how (or if) the models steer clear of copyrighted material in the code and text they generate. Anyways, I fully intend to blanket the internet with aggressively copyrighted Hello World programs.</li>
+        <li><strong>Geopolitical uncertainty/sovereignty concerns:</strong> We might have a good sense of where the tech is heading, but as for long-term access to our favorite tools — that may depend on which countries are still on speaking terms next quarter.</li>
+      </ul>
+      
+      <h2>Where We're Heading Next</h2>
+      <p>Looking ahead, I believe we should already be implementing MCP agents for our clients' benefit. We should have autonomous or scheduled agents doing busy work during nighttime hours, agents that orchestrate and create other agents, and local LLMs taking on coordination of tools requiring higher standards for privacy.</p>
+      
+      <p>Beyond the technology itself, the nature of organizations must start adapting to the arrival of a large number of artificial co-workers. I do not think it is just a change in tooling; it's rather a transformation in how teams are structured, responsibilities allocated, productivity achieved and communication arranged.</p>
+      
+      <p>As we move forward, it seems natural that this transformation won't be limited to software development. The patterns we're hoping to see in coding - enhanced creativity, accelerated productivity, and human-AI collaboration - are likely to emerge in other creative and technical domains. This is not the part of the future I approach with trepidation, this is the exciting part. Enjoy.
+      </p>
+    </div>
+    
+    <div class="attribution">
+      Interactive timeline visualization created for "The Evolution of AI-Assisted Coding: A Personal Journey Through the Paradigm Shift"
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.timeline-button');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Filter items
+          const filter = button.getAttribute('data-filter');
+          timelineItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'flex';
+              setTimeout(() => item.classList.add('visible'), 50);
+            } else {
+              item.classList.remove('visible');
+              setTimeout(() => item.style.display = 'none', 500);
+            }
+          });
+        });
+      });
+      
+      // Show all items initially
+      timelineItems.forEach(item => {
+        setTimeout(() => item.classList.add('visible'), 50);
+      });
+      
+      // Helper function to sort timeline items chronologically
+      const sortTimelineItems = () => {
+        const container = document.querySelector('.timeline-container');
+        const items = Array.from(timelineItems);
+        
+        // Date parsing helper (handles "Future", "Q1 2025", etc.)
+        const getDateValue = (dateText) => {
+          if (dateText.includes('Future')) return 99999999;
+          if (dateText.includes('Early 2025')) return 20250101;
+          if (dateText.includes('Q1 2025')) return 20250102;
+          if (dateText.includes('January 2025')) return 20250100;
+          if (dateText.includes('February 2025')) return 20250200;
+          if (dateText.includes('March 2025')) return 20250300;
+          if (dateText.includes('April 2025')) return 20250400;
+          if (dateText.includes('Late 2024')) return 20241100;
+          if (dateText.includes('December 2024')) return 20241200;
+          if (dateText.includes('Fall 2024')) return 20241000;
+          if (dateText.includes('2023-Fall 2024')) return 20230000;
+          if (dateText.includes('2023')) return 20230000;
+          return 0;
+        };
+        
+        // Sort items by date
+        items.sort((a, b) => {
+          const dateA = a.querySelector('.timeline-date').textContent;
+          const dateB = b.querySelector('.timeline-date').textContent;
+          return getDateValue(dateA) - getDateValue(dateB);
+        });
+        
+        // Reattach sorted items to container
+        items.forEach(item => {
+          container.appendChild(item);
+        });
+      };
+      
+      // Sort items on load
+      sortTimelineItems();
+    });
+  </script>
+</body>
+</html> 
