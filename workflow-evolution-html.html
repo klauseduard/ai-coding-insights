@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution of Human-Agent Workflows in Software Development</title>
+  <style>
+    :root {
+      --primary: #4a6b8c;
+      --primary-light: #7a9bbc;
+      --primary-lighter: #c5d7e7;
+      --secondary: #2a3b4c;
+      --background: #f8f9fa;
+      --blue-50: #e6f0f9;
+      --blue-100: #cce0f3;
+      --blue-700: #2b6cb0;
+      --blue-800: #1e429f;
+      --gray-50: #f9fafb;
+      --gray-700: #4b5563;
+      --white: #ffffff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--secondary);
+      background-color: var(--background);
+      padding: 1.5rem;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--blue-800);
+      margin-bottom: 0.5rem;
+    }
+    
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue-700);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    ul {
+      list-style-position: inside;
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    li {
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .workflow-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    
+    .workflow-card {
+      background-color: var(--white);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .workflow-header {
+      background-color: var(--blue-50);
+      padding: 1rem;
+      border-bottom: 1px solid var(--blue-100);
+    }
+    
+    .workflow-header h2 {
+      margin-bottom: 0.25rem;
+    }
+    
+    .workflow-header p {
+      font-style: italic;
+    }
+    
+    .workflow-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (min-width: 768px) {
+      .workflow-content {
+        flex-direction: row;
+      }
+    }
+    
+    .workflow-details {
+      padding: 1rem;
+      width: 100%;
+    }
+    
+    @media (min-width: 768px) {
+      .workflow-details {
+        width: 66.666667%;
+      }
+    }
+    
+    .roles-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .roles-container {
+        flex-direction: row;
+        gap: 1rem;
+      }
+    }
+    
+    .role-section {
+      flex: 1;
+    }
+    
+    .workflow-illustration {
+      padding: 1rem;
+      background-color: var(--gray-50);
+      width: 100%;
+    }
+    
+    @media (min-width: 768px) {
+      .workflow-illustration {
+        width: 33.333333%;
+      }
+    }
+    
+    .arrow-down {
+      display: flex;
+      justify-content: center;
+      margin: 0.5rem 0;
+    }
+    
+    .insights-section {
+      width: 100%;
+      background-color: var(--blue-50);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-top: 2.5rem;
+    }
+    
+    .insights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .insights-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .insight-card {
+      background-color: var(--white);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .attribution {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    /* SVG Style Overrides */
+    .human-circle {
+      fill: var(--primary);
+    }
+    
+    .ai-circle {
+      fill: var(--primary-light);
+    }
+    
+    .tool-circle {
+      fill: var(--primary-lighter);
+    }
+    
+    .nav-button {
+      padding: 0.5rem 1rem;
+      background-color: var(--blue-50);
+      border: 1px solid var(--blue-100);
+      border-radius: 0.25rem;
+      margin: 0 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .nav-button:hover {
+      background-color: var(--blue-100);
+    }
+    
+    .nav-button.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .workflow-navigation {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R2CD8VG3XC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R2CD8VG3XC');
+</script>
+<body>
+  <div class="container">
+    <h1>Evolution of Human-Agent Workflows in Software Development</h1>
+    
+    <div class="workflow-navigation">
+      <button class="nav-button" data-index="0">Autocomplete Era</button>
+      <button class="nav-button" data-index="1">Context-Aware Era</button>
+      <button class="nav-button" data-index="2">Tool-Using Era</button>
+      <button class="nav-button" data-index="3">Agentic Era</button>
+      <button class="nav-button" data-index="all">View All</button>
+    </div>
+    
+    <div class="workflow-container" id="workflow-container">
+      <!-- Workflow cards will be inserted here by JavaScript -->
+    </div>
+    
+    <div class="insights-section">
+      <h2>Key Workflow Evolution Insights</h2>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <h3>Economic Impact</h3>
+          <p>
+            As workflows evolve, the economic model shifts from a simple "coding tax" to an 
+            investment in AI agents that can deliver increasingly autonomous value. This requires 
+            different budgeting approaches and ROI calculations based on business outcomes rather 
+            than developer time saved.
+          </p>
+        </div>
+        
+        <div class="insight-card">
+          <h3>Skill Transitions</h3>
+          <p>
+            Developer skills evolve from technical coding expertise to higher-order capabilities 
+            like prompt engineering, agent orchestration, and quality validation. The most valuable 
+            human skills become those that effectively direct and coordinate AI capabilities rather 
+            than compete with them.
+          </p>
+        </div>
+        
+        <div class="insight-card">
+          <h3>Organizational Readiness</h3>
+          <p>
+            Organizations need new processes, governance models, and team structures to effectively 
+            incorporate autonomous agents. This includes mechanisms for quality assurance, ethical 
+            guidelines for agent deployment, and clear escalation paths when human intervention 
+            is needed.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <p class="attribution">
+      Note: This visualization represents the evolution described in "The Evolution of AI-Assisted Coding" combined with 
+      economic perspectives from "Rethinking the Economics of AI-Powered Development."
+    </p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Workflow data
+      const workflows = [
+        {
+          phase: "Autocomplete Era (2023)",
+          description: "Developer leads with AI providing suggestions",
+          humanRole: [
+            "Writing most code manually",
+            "Making all architectural decisions",
+            "Choosing when to accept AI suggestions",
+            "Responsible for testing and debugging",
+            "Managing all project tasks"
+          ],
+          aiRole: [
+            "Suggesting line completions",
+            "Offering simple function completions",
+            "Providing basic documentation",
+            "Limited to local file context",
+            "Passive assistant mode only"
+          ],
+          illustration: `
+            <svg viewBox="0 0 500 150" style="width: 100%; height: 160px;">
+              <!-- Human figure - larger and leading -->
+              <circle cx="150" cy="75" r="30" class="human-circle" />
+              <text x="150" y="80" text-anchor="middle" fill="white" font-size="14">Human</text>
+              
+              <!-- AI figure - smaller and following -->
+              <circle cx="250" cy="75" r="20" class="tool-circle" />
+              <text x="250" y="80" text-anchor="middle" fill="#2a3b4c" font-size="12">AI</text>
+              
+              <!-- Direction arrow -->
+              <path d="M190 75 L220 75" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead1)" />
+              
+              <!-- Code representation -->
+              <rect x="300" y="45" width="150" height="60" rx="5" fill="white" stroke="#2a3b4c" />
+              <text x="320" y="65" fill="#2a3b4c" font-size="10">function calculate() {</text>
+              <text x="320" y="80" fill="#2a3b4c" font-size="10">  return a + b;</text>
+              <text x="320" y="95" fill="#2a3b4c" font-size="10">}</text>
+              
+              <!-- Arrow markers definition -->
+              <defs>
+                <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#2a3b4c" />
+                </marker>
+              </defs>
+            </svg>
+          `
+        },
+        {
+          phase: "Context-Aware Era (Late 2024)",
+          description: "Collaborative coding with AI understanding the full project",
+          humanRole: [
+            "Defining tasks and approach",
+            "Guiding AI through complex implementations",
+            "Reviewing and integrating AI suggestions",
+            "Overseeing architecture decisions",
+            "Providing domain expertise"
+          ],
+          aiRole: [
+            "Understanding entire codebase context",
+            "Generating full functions and classes",
+            "Creating tests based on implementation",
+            "Offering architectural suggestions",
+            "Engaging in natural language dialogue"
+          ],
+          illustration: `
+            <svg viewBox="0 0 500 150" style="width: 100%; height: 160px;">
+              <!-- Human figure - equal size, collaborative -->
+              <circle cx="150" cy="75" r="25" class="human-circle" />
+              <text x="150" y="80" text-anchor="middle" fill="white" font-size="14">Human</text>
+              
+              <!-- AI figure - equal size, collaborative -->
+              <circle cx="240" cy="75" r="25" class="ai-circle" />
+              <text x="240" y="80" text-anchor="middle" fill="white" font-size="14">AI</text>
+              
+              <!-- Bidirectional arrows -->
+              <path d="M180 70 L210 70" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead2)" />
+              <path d="M210 80 L180 80" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead2)" />
+              
+              <!-- Multiple files representation -->
+              <rect x="300" y="30" width="80" height="40" rx="3" fill="white" stroke="#2a3b4c" />
+              <text x="340" y="55" text-anchor="middle" fill="#2a3b4c" font-size="10">model.js</text>
+              
+              <rect x="320" y="50" width="80" height="40" rx="3" fill="white" stroke="#2a3b4c" />
+              <text x="360" y="75" text-anchor="middle" fill="#2a3b4c" font-size="10">view.js</text>
+              
+              <rect x="340" y="70" width="80" height="40" rx="3" fill="white" stroke="#2a3b4c" />
+              <text x="380" y="95" text-anchor="middle" fill="#2a3b4c" font-size="10">controller.js</text>
+              
+              <!-- Connection lines -->
+              <path d="M270 75 L290 75" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead2)" />
+              
+              <!-- Arrow markers definition -->
+              <defs>
+                <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#2a3b4c" />
+                </marker>
+              </defs>
+            </svg>
+          `
+        },
+        {
+          phase: "Tool-Using Agent Era (Early 2025)",
+          description: "AI as semi-autonomous implementer using various tools",
+          humanRole: [
+            "Defining high-level requirements",
+            "Setting quality standards",
+            "Reviewing key architectural decisions",
+            "Providing domain-specific guidance",
+            "Final approval and business alignment"
+          ],
+          aiRole: [
+            "Implementing features autonomously",
+            "Accessing external documentation and resources",
+            "Using code analysis and execution tools",
+            "Generating and running tests",
+            "Refactoring and optimizing code"
+          ],
+          illustration: `
+            <svg viewBox="0 0 500 150" style="width: 100%; height: 160px;">
+              <!-- Human figure - directing -->
+              <circle cx="100" cy="75" r="25" class="human-circle" />
+              <text x="100" y="80" text-anchor="middle" fill="white" font-size="14">Human</text>
+              
+              <!-- AI figure - central and larger -->
+              <circle cx="220" cy="75" r="30" class="ai-circle" />
+              <text x="220" y="80" text-anchor="middle" fill="white" font-size="14">AI</text>
+              
+              <!-- Tools around AI -->
+              <circle cx="280" cy="35" r="15" class="tool-circle" />
+              <text x="280" y="40" text-anchor="middle" fill="#2a3b4c" font-size="10">Search</text>
+              
+              <circle cx="280" cy="115" r="15" class="tool-circle" />
+              <text x="280" y="120" text-anchor="middle" fill="#2a3b4c" font-size="10">CLI</text>
+              
+              <circle cx="160" cy="35" r="15" class="tool-circle" />
+              <text x="160" y="40" text-anchor="middle" fill="#2a3b4c" font-size="10">Docs</text>
+              
+              <circle cx="160" cy="115" r="15" class="tool-circle" />
+              <text x="160" y="120" text-anchor="middle" fill="#2a3b4c" font-size="10">Tests</text>
+              
+              <!-- Output files -->
+              <rect x="350" y="30" width="120" height="90" rx="5" fill="white" stroke="#2a3b4c" />
+              <text x="410" y="50" text-anchor="middle" fill="#2a3b4c" font-size="12">Project</text>
+              
+              <rect x="360" y="60" width="40" height="20" rx="2" fill="#f0f0f0" stroke="#2a3b4c" stroke-width="0.5" />
+              <rect x="410" y="60" width="40" height="20" rx="2" fill="#f0f0f0" stroke="#2a3b4c" stroke-width="0.5" />
+              <rect x="360" y="90" width="40" height="20" rx="2" fill="#f0f0f0" stroke="#2a3b4c" stroke-width="0.5" />
+              <rect x="410" y="90" width="40" height="20" rx="2" fill="#f0f0f0" stroke="#2a3b4c" stroke-width="0.5" />
+              
+              <!-- Connection lines -->
+              <path d="M130 75 L180 75" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead3)" />
+              <path d="M250 75 L340 75" stroke="#2a3b4c" stroke-width="2" marker-end="url(#arrowhead3)" />
+              
+              <path d="M220 45 L220 15 L345 15 L345 30" stroke="#2a3b4c" stroke-width="1" stroke-dasharray="3" />
+              <path d="M220 105 L220 135 L345 135 L345 120" stroke="#2a3b4c" stroke-width="1" stroke-dasharray="3" />
+              
+              <!-- Arrow markers definition -->
+              <defs>
+                <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#2a3b4c" />
+                </marker>
+              </defs>
+            </svg>
+          `
+        },
+        {
+          phase: "Agentic Era (2025+)",
+          description: "Multiple AI agents working autonomously with human orchestration",
+          humanRole: [
+            "Product visioning and strategic direction",
+            "Setting business goals and constraints",
+            "Orchestrating agent collaboration",
+            "Quality assessment and acceptance",
+            "Creative problem solving and innovation"
+          ],
+          aiRole: [
+            "Independent feature implementation",
+            "Autonomous debugging and optimization",
+            "Agent-to-agent coordination",
+            "24/7 development cycles",
+            "Continuous integration and deployment"
+          ],
+          illustration: `
+            <svg viewBox="0 0 500 150" style="width: 100%; height: 160px;">
+              <!-- Human figure - orchestrating from top -->
+              <circle cx="250" cy="30" r="20" class="human-circle" />
+              <text x="250" y="35" text-anchor="middle" fill="white" font-size="12">Human</text>
+              
+              <!-- Multiple AI agents -->
+              <circle cx="170" cy="90" r="20" class="ai-circle" />
+              <text x="170" y="95" text-anchor="middle" fill="white" font-size="10">Agent 1</text>
+              
+              <circle cx="250" cy="90" r="20" class="ai-circle" />
+              <text x="250" y="95" text-anchor="middle" fill="white" font-size="10">Agent 2</text>
+              
+              <circle cx="330" cy="90" r="20" class="ai-circle" />
+              <text x="330" y="95" text-anchor="middle" fill="white" font-size="10">Agent 3</text>
+              
+              <!-- Direction lines from human -->
+              <path d="M245 50 L175 70" stroke="#2a3b4c" stroke-width="1" marker-end="url(#arrowhead4)" />
+              <path d="M250 50 L250 70" stroke="#2a3b4c" stroke-width="1" marker-end="url(#arrowhead4)" />
+              <path d="M255 50 L325 70" stroke="#2a3b4c" stroke-width="1" marker-end="url(#arrowhead4)" />
+              
+              <!-- Agent connections -->
+              <path d="M190 95 L230 95" stroke="#2a3b4c" stroke-width="1" marker-end="url(#arrowhead4)" />
+              <path d="M270 95 L310 95" stroke="#2a3b4c" stroke-width="1" marker-end="url(#arrowhead4)" />
+              
+              <!-- Project representation -->
+              <rect x="140" y="120" width="220" height="25" rx="3" fill="#f0f0f0" stroke="#2a3b4c" />
+              <text x="250" y="135" text-anchor="middle" fill="#2a3b4c" font-size="10">Complete Product Implementation</text>
+              
+              <!-- Agent to project connections -->
+              <path d="M170 110 L170 120" stroke="#2a3b4c" stroke-width="1" />
+              <path d="M250 110 L250 120" stroke="#2a3b4c" stroke-width="1" />
+              <path d="M330 110 L330 120" stroke="#2a3b4c" stroke-width="1" />
+              
+              <!-- Arrow markers definition -->
+              <defs>
+                <marker id="arrowhead4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#2a3b4c" />
+                </marker>
+              </defs>
+            </svg>
+          `
+        }
+      ];
+      
+      const container = document.getElementById('workflow-container');
+      const navButtons = document.querySelectorAll('.nav-button');
+      
+      // Function to create workflow cards
+      function createWorkflowCard(workflow, index) {
+        const card = document.createElement('div');
+        card.className = 'workflow-card';
+        card.dataset.index = index;
+        
+        card.innerHTML = `
+          <div class="workflow-header">
+            <h2>${workflow.phase}</h2>
+            <p>${workflow.description}</p>
+          </div>
+          
+          <div class="workflow-content">
+            <div class="workflow-details">
+              <div class="roles-container">
+                <div class="role-section">
+                  <h3>Human Role</h3>
+                  <ul>
+                    ${workflow.humanRole.map(role => `<li>${role}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div class="role-section">
+                  <h3>AI Role</h3>
+                  <ul>
+                    ${workflow.aiRole.map(role => `<li>${role}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="workflow-illustration">
+              <h3 style="text-align: center; margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--gray-700);">Workflow Illustration</h3>
+              ${workflow.illustration}
+            </div>
+          </div>
+        `;
+        
+        // Add arrow down if not the last card
+        if (index < workflows.length - 1) {
+          const arrow = document.createElement('div');
+          arrow.className = 'arrow-down';
+          arrow.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4L12 20M12 20L6 14M12 20L18 14" stroke="#4a6b8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          `;
+          card.appendChild(arrow);
+        }
+        
+        return card;
+      }
+      
+      // Initially show all workflows
+      function showAllWorkflows() {
+        container.innerHTML = '';
+        workflows.forEach((workflow, index) => {
+          container.appendChild(createWorkflowCard(workflow, index));
+        });
+      }
+      
+      // Show a specific workflow
+      function showWorkflow(index) {
+        container.innerHTML = '';
+        if (index === 'all') {
+          showAllWorkflows();
+        } else {
+          container.appendChild(createWorkflowCard(workflows[index], index));
+        }
+      }
+      
+      // Set up navigation
+      navButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Update active button
+          navButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show selected workflow
+          showWorkflow(this.dataset.index);
+        });
+      });
+      
+      // Set first button as active and show all workflows initially
+      navButtons[navButtons.length - 1].classList.add('active');
+      showAllWorkflows();
+    });
+  </script>
+</body>
+</html>
