@@ -314,6 +314,71 @@
         padding: 1rem;
       }
     }
+
+    /* Base link styles */
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+    
+    a:hover {
+      color: var(--highlight);
+      border-bottom-color: var(--highlight);
+    }
+    
+    /* Timeline link styles */
+    .timeline-feature a, .unlocked-feature a {
+      color: var(--secondary);
+      font-weight: 500;
+      border-bottom: 1px dotted var(--tertiary);
+      padding: 0 0.1rem;
+      position: relative;
+    }
+    
+    .timeline-feature a::after, .unlocked-feature a::after {
+      content: '↗';
+      font-size: 0.8em;
+      margin-left: 0.2em;
+      opacity: 0.7;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    
+    .timeline-feature a:hover, .unlocked-feature a:hover {
+      color: var(--highlight);
+      border-bottom-color: var(--highlight);
+    }
+    
+    .timeline-feature a:hover::after, .unlocked-feature a:hover::after {
+      opacity: 1;
+      transform: translate(1px, -1px);
+    }
+    
+    /* Blog content link styles */
+    .blog-content a {
+      color: var(--secondary);
+      border-bottom: 1px solid var(--tertiary);
+    }
+    
+    .blog-content a:hover {
+      color: var(--highlight);
+      border-bottom-color: var(--highlight);
+    }
+    
+    /* Reference link styles */
+    .references a {
+      color: var(--secondary);
+      display: inline-block;
+      padding: 0.1rem 0;
+    }
+    
+    .references a:hover {
+      color: var(--highlight);
+      transform: translateX(2px);
+    }
   </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -337,7 +402,7 @@
       <h2>How I Met the Agents</h2>
           
       <p>In December 2024, while on vacation, I read a Twitter post
-        claiming that a new IDE called Cursor was pretty bad and
+        claiming that a new IDE called <a href="https://www.cursor.com/">Cursor</a> was pretty bad and
         kept deleting users' files and code lines. Having done
         plenty of coding with AI already, I wanted to see just how
         bad it could be and installed it. Less than two weeks later, I had implemented a
@@ -554,7 +619,7 @@
     <!-- Challenges and Future Section -->
     <div class="blog-content">
       <h2>Lessons Learned and Drawbacks</h2>
-      <p>Not everything has been smooth sailing of course. I've learned some painful lessons about not letting agents search for solutions from the wrong places, being more resolute about rolling back long chains of bad reasoning, and Claude Code taking all my money. When an agent starts down an unproductive path, it's often better to reset than to try to course-correct incrementally.</p>
+      <p>Not everything has been smooth sailing of course. I've learned some painful lessons about not letting agents search for solutions from the wrong places, being more resolute about rolling back long chains of bad reasoning, and <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview">Claude Code</a> taking all my money. When an agent starts down an unproductive path, it's often better to reset than to try to course-correct incrementally.</p>
       
       <h2>Challenges and Considerations</h2>
       
@@ -579,6 +644,16 @@
         collaboration -- are likely to emerge in other creative and technical domains.
       </p>
 
+      <h2>References</h2>
+
+      <div class="references">
+        <ul>
+            <li><strong>Model Context Protocol:</strong> Anthropic's <a href="https://www.anthropic.com/news/model-context-protocol">Introducing the Model Context Protocol</a> (Nov 25, 2024)</li>
+            <li><strong>Agent2Agent Protocol:</strong> Google's <a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Announcing the Agent2Agent Protocol (A2A)</a> (Apr 09, 2025)</li>
+            <li><strong>Cursor IDE:</strong> <a href="https://www.cursor.com/">Cursor - The AI Code Editor</a></li>
+            <li><strong>Claude Code:</strong> <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview">Claude Code Overview</a></li>
+        </ul>
+      </div>
     </div>
     
   </div>
